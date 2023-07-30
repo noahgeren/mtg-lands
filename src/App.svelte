@@ -22,20 +22,20 @@
     return s
   }
 
-  let otherCount = 40,
-    landCount = 20,
+  let totalCount = 60,
+    landCount = 25,
     turn = 0
 
   $: landProbs = Array.from({ length: turn + 8 }, (_, i) => i).map((lands) => ({
     lands,
     exact:
-      hyp(lands, turn + 7, landCount, landCount + otherCount) -
+      hyp(lands, turn + 7, landCount, totalCount) -
       (lands === 0
         ? 0
-        : hyp(lands - 1, turn + 7, landCount, landCount + otherCount)),
+        : hyp(lands - 1, turn + 7, landCount, totalCount)),
     cum: 1 - (lands === 0
         ? 0
-        : hyp(lands - 1, turn + 7, landCount, landCount + otherCount))
+        : hyp(lands - 1, turn + 7, landCount, totalCount))
   }))
 </script>
 
@@ -50,8 +50,8 @@
 </style>
 
 <div style="width: fit-content;">
-  <label for="other_count">Other Cards:</label>
-  <input bind:value={otherCount} type="number" id="other_count" />
+  <label for="other_count">Total Cards:</label>
+  <input bind:value={totalCount} type="number" id="other_count" />
   <label for="land_count">Land Cards:</label>
   <input bind:value={landCount} type="number" id="landCount" />
   <br />
