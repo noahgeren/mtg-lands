@@ -49,13 +49,20 @@
   }
 </style>
 
-<div style="width: fit-content;">
-  <label for="other_count">Total Cards:</label>
-  <input bind:value={totalCount} type="number" id="other_count" />
-  <label for="land_count">Land Cards:</label>
-  <input bind:value={landCount} type="number" id="landCount" />
-  <br />
-  <label for="turn">Turn: {turn}</label>
+<div style="width: fit-content; max-width:700px; margin: 0.5rem 1rem;">
+  <div class="row">
+    <div class="col">
+      <label for="other_count">Total Cards:</label><br/>
+      <input bind:value={totalCount} type="number" id="other_count" class="w-100" />
+    </div>
+    <div class="col">
+      <label for="land_count">Lands:</label><br/>
+       <input bind:value={landCount} type="number" id="land_count" class="w-100" />
+    </div>
+  </div>
+  <div class="my-2 w-50">
+    <label for="turn">Turn:&nbsp;</label><input bind:value={turn} type="number" />
+  </div>
   <input
     bind:value={turn}
     type="range"
@@ -72,6 +79,11 @@
       </tr>
     </thead>
     <tbody>
+      <tr>
+        <td><em>Number of lands drawn</em></td>
+        <td><em>Chance of drawing exactly this many lands</em></td>
+        <td><em>Chance of drawing this many lands or more</em></td>
+      </tr>
       {#each landProbs as prob}
         <tr>
           <td>{prob.lands}</td>

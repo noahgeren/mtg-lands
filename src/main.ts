@@ -11,7 +11,6 @@ initializeApp({
   appId: "1:978292521286:web:844fba4342f7b0bbab0d47"
 });
 
-
 const app = new App({
   target: document.getElementById('app'),
 })
